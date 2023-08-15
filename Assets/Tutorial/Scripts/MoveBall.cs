@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MoveBall : MonoBehaviour
 {
-    public float speedx = 0.01f;
+    public float speed = 1.0f;
+    // public Vector3 speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,8 @@ public class MoveBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + new Vector3(speedx, 0.01f, 0);
+        Vector3 userinput = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+        Debug.Log(userinput);
+        transform.position = transform.position + userinput * speed * Time.deltaTime;
     }
 }
