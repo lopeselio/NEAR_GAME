@@ -16,6 +16,16 @@ public class Move2D : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
+
+    public void Attack(InputAction.CallbackContext context){
+        if (context.started){
+            _animator.SetTrigger("attack");    
+        }
+        if (context.canceled){
+            _animator.ResetTrigger("attack");    
+        }  
+    }
+
     public void Move(InputAction.CallbackContext context){
         _userinput = context.ReadValue<Vector2>();
         _animator.SetFloat("speed", _userinput.magnitude);
